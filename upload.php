@@ -15,7 +15,7 @@ $file_max_size = 2000000; // 2MB
 // ①POSTリクエストによるページ遷移かチェック
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  if ( !isset($_FILES['upload']['error']) || !is_int($_FILES['upload']['error']) ) {
+  if ( !isset($_FILES['upfile']['error']) || !is_int($_FILES['upfile']['error']) ) {
     $error .= 'パラメータが不正です。<br>\n';
   }
 
