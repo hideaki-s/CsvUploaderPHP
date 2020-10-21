@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // CSVデータ変換と読込み
   setlocale(LC_ALL,'jp_JP.UTF-8');
-  $target_path = $_FILES['upload']['tmp_name'];
+  $target_path = $_FILES['upfile']['tmp_name'];
   $data = file_get_contents($target_path);
   $data = mb_convert_encoding($data,'UTF-8','sjis-win');
 
