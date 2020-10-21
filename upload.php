@@ -24,28 +24,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     case UPLOAD_ERR_OK: // OK
       break;
     case UPLOAD_ERR_NO_FILE:   // ファイル未選択
-      $error .= 'ファイルが選択されていません。<br>\n';
+      $error .= "ファイルが選択されていません。<br>\n";
+      break;
     case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
     case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過 (設定した場合のみ)
-      $error .= 'ファイルサイズが大きすぎます。<br>\n';
+      $error .= "ファイルサイズが大きすぎます。<br>\n";
+      break;
     default:
-      $error .= 'その他のエラーが発生しました。<br>\n';
+      $error .= "その他のエラーが発生しました。<br>\n";
+      break;
   }
 
   // ここで定義するサイズゼロチェック
   if ( $_FILES['upfile']['size'] === 0) {
-    $error .= 'ファイルが選択されていません。<br>\n';
+    $error .= "ファイルが選択されていません。<br>\n";
   }
 
   // ここで定義するサイズ上限のオーバーチェック
   if ( $_FILES['upfile']['size'] > $file_max_size ) {
-    $error .= 'ファイルサイズが大きすぎます。<br>\n';
+    $error .= "ファイルサイズが大きすぎます。<br>\n";
   }
 
   // $_FILES['upfile']['mime']の値はブラウザ側で偽装可能なので
   // MIMEタイプに対応する拡張子を自前で取得する
   if ( $_FILES['upload']['type'] != 'text/csv' ) {
-    $error .= 'ファイル形式が不正です。<br>\n';
+    $error .= "ファイル形式が不正です。<br>\n";
   }
 
   // TODO 一時ファイルであればわざわざコピーせずとも内容を読み取ってしまえばいい気がする
