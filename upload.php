@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // $_FILES['upfile']['mime']の値はブラウザ側で偽装可能なので
   // MIMEタイプに対応する拡張子を自前で取得する
-  if ( $_FILES['upload']['type'] != 'text/csv' ) {
+  if ( $_FILES['upfile']['type'] != 'text/csv' ) {
     $error .= "ファイル形式が不正です。<br>\n";
   }
 
